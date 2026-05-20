@@ -308,14 +308,27 @@ function mostrarPantallaConfirmacion(formulario) {
 document.addEventListener("DOMContentLoaded", () => {
     manejarCamposCondicionales();
 
+    // Manejo de contador de caracteres para descripción
     const descripcionTextarea = document.getElementById("descripcion");
     const descripcionContador = document.getElementById("contadorDescripcion");
     manejarContadorCaracteres(descripcionTextarea, descripcionContador, 500);
 
+    // Manejo de contador de caracteres para reparación previa
     const reparacionTextarea = document.getElementById("reparacionTextarea");
     const reparacionContador = document.getElementById("contadorReparacion");
     manejarContadorCaracteres(reparacionTextarea, reparacionContador, 300);
 
+    // Manejo del envío del formulario
     const formulario = document.getElementById("formulario");
     manejarEnvioFormulario(formulario);
+
+    // Validaciones adicionales al interactuar con campos
+    formulario.querySelectorAll("input, select, textarea").forEach((campo) => {
+        campo.addEventListener("blur", () => {
+            if (campo.offsetParent !== null) {
+                const esValido = validarCampo(campo);
+                manejarRetroalimentacionVisual(campo, esValido, "Campo inválido");
+            }
+        });
+    });
 });
