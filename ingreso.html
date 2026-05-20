@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ingreso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        .actions {
+            text-align: center;
+        }
+        .actions button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <!-- Sección A: Datos del Cliente -->
+        <div class="section">
+            <h2>Datos del Cliente</h2>
+            <label>Nombre completo: <input type="text" name="nombre" required></label><br>
+            <label>DNI: <input type="text" name="dni" required></label><br>
+            <label>Correo electrónico: <input type="email" name="email" required></label><br>
+            <label>Confirmar correo electrónico: <input type="email" name="confirm_email" required></label><br>
+            <label>Teléfono de contacto: <input type="tel" name="telefono" required></label><br>
+            <label>Tipo de cliente:</label><br>
+            <label><input type="radio" name="tipo_cliente" value="Particular" required> Particular</label>
+            <label><input type="radio" name="tipo_cliente" value="Empresa" required> Empresa</label><br>
+            <div id="empresa-info" class="hidden">
+                <label>Nombre de la empresa: <input type="text" name="nombre_empresa"></label><br>
+                <label>CUIT: <input type="text" name="cuit"></label><br>
+            </div>
+            <label>Provincia: 
+                <select name="provincia" required>
+                    <option value="">Seleccione una provincia</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Santa Fe">Santa Fe</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Tucumán">Tucumán</option>
+                    <option value="Salta">Salta</option>
+                    <option value="Chaco">Chaco</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Corrientes">Corrientes</option>
+                    <option value="Entre Ríos">Entre Ríos</option>
+                </select>
+            </label><br>
+            <label>Localidad: <input type="text" name="localidad" required></label>
+        </div>
+
+        <!-- Sección B: Datos del Equipo -->
+        <div class="section">
+            <h2>Datos del Equipo</h2>
+            <label>Tipo de dispositivo: 
+                <select name="tipo_dispositivo" id="tipo_dispositivo" required>
+                    <option value="">Seleccione un tipo</option>
+                    <option value="Notebook">Notebook</option>
+                    <option value="Computador de escritorio">Computador de escritorio</option>
+                    <option value="Impresora">Impresora</option>
+                    <option value="Tablet">Tablet</option>
+                    <option value="Telefono movil">Teléfono móvil</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </label><br>
+            <div id="otro-dispositivo" class="hidden">
+                <label>Especifique: <input type="text" name="otro_dispositivo"></label><br>
+            </div>
+            <label>Marca: 
+                <select name="marca" id="marca" required>
+                    <option value="">Seleccione una marca</option>
+                    <option value="HP">HP</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Otra">Otra</option>
+                </select>
+            </label><br>
+            <div id="otra-marca" class="hidden">
+                <label>Especifique: <input type="text" name="otra_marca"></label><br>
+            </div>
+            <label>Modelo: <input type="text" name="modelo" required></label><br>
+            <label>Número de serie o IMEI (opcional): <input type="text" name="numero_serie"></label>
+            <small>Nota: Puede encontrarlo en la etiqueta del dispositivo.</small><br>
+            <label>Sistema operativo: 
+                <select name="sistema_operativo" required>
+                    <option value="">Seleccione un sistema</option>
+                    <option value="Windows 10">Windows 10</option>
+                    <option value="Windows 11">Windows 11</option>
+                    <option value="macOS">macOS</option>
+                    <option value="Linux">Linux</option>
+                    <option value="Android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="No aplica">No aplica / No sabe</option>
+                </select>
+            </label><br>
+            <label><input type="checkbox" name="garantia"> El equipo tiene garantía vigente del fabricante</label><br>
+            <div id="garantia-info" class="hidden">
+                <label>Número de orden de compra o fecha de compra: <input type="text" name="orden_compra"></label><br>
+            </div>
+            <label><input type="checkbox" name="datos_importantes"> El equipo contiene datos importantes sin respaldo</label>
+            <small>Advertencia: TechFix no se responsabiliza por pérdida de datos.</small>
+        </div>
+
+        <!-- Sección C: Descripción del Problema -->
+        <div class="section">
+            <h2>Descripción del Problema</h2>
+            <label>Tipo de problema principal: 
+                <select name="tipo_problema" required>
+                    <option value="">Seleccione un problema</option>
+                    <option value="No enciende">No enciende</option>
+                    <option value="Pantalla dañada">Pantalla dañada</option>
+                    <option value="Lentitud o rendimiento">Lentitud o rendimiento</option>
+                    <option value="Virus o malware">Virus o malware</option>
+                    <option value="Problema de red o conectividad">Problema de red o conectividad</option>
+                    <option value="Daño por líquido">Daño por líquido</option>
+                    <option value="Sonido">Sonido</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </label><br>
+            <label>Desde cuándo ocurre el problema: 
+                <select name="tiempo_problema" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="Hoy">Hoy</option>
+                    <option value="Hace algunos días">Hace algunos días</option>
+                    <option value="Hace semanas">Hace semanas</option>
+                    <option value="Hace meses">Hace meses</option>
+                </select>
+            </label><br>
+            <label>El problema es:</label><br>
+            <label><input type="radio" name="permanencia_problema" value="Permanente" required> Permanente</label>
+            <label><input type="radio" name="permanencia_problema" value="Intermitente" required> Intermitente</label><br>
+            <label>Descripción detallada del problema:</label><br>
+            <textarea name="descripcion_problema" minlength="20" maxlength="500" required></textarea><br>
+            <label><input type="checkbox" name="intento_reparacion"> El cliente ya intentó repararlo o lo llevó a otro técnico</label><br>
+            <div id="reparacion-info" class="hidden">
+                <label>Describa qué se hizo anteriormente (opcional):</label><br>
+                <textarea name="descripcion_reparacion" maxlength="300"></textarea>
+            </div>
+        </div>
+
+        <!-- Sección D: Preferencias de Entrega y Confirmación -->
+        <div class="section">
+            <h2>Preferencias de Entrega y Confirmación</h2>
+            <label>Modalidad de entrega del equipo:</label><br>
+            <label><input type="radio" name="modalidad_entrega" value="Personalmente" required> Lo llevo personalmente al local</label></div>
